@@ -12,7 +12,6 @@ char** ParseCommandLine(char* InputCommand);
 
 
 int main(){
-	// run the command loop
 	int i = 0; // loop count for history array
 	int k;
 	int current = 0;// 'current' mark the index of history array
@@ -55,7 +54,8 @@ int main(){
 			args[1] = strtok(args[1], "\n");
 			if(chdir(args[1]) == -1){
 				printf("***ERROR: can not find the file or directory.\n");
-				break;
+				free(hist_arr[current]);
+				hist_arr[current] = strdup(InputCommand);			
 			}
 		}
 		else if(strcmp(command, "pwd\n") == 0){// inernal pwd command
@@ -68,16 +68,17 @@ int main(){
 		else if(strcmp(command, "history\n") == 0){ // internal history command
 			k = current;
 			int his_count = 1;
+			printf("\n");
 			do{
-				if(hist_arr[k])
+				if(hist_arr[k] != NULL && strcmp(hist_arr[k], "\n") != 0)
 					printf("%4d %s", his_count++, hist_arr[k]);
 				k = (k+1) % HISSize;
 			}while (k != current);
-
+			printf("\n");
 		}
 		if(strcmp(command, "pwd\n") != 0 && strcmp(cd_command, "cd") != 0 &&
-			strcmp(command, "history\n") != 0 && strcmp(command, "cat\n") != 0 &&
-			strcmp(command, "ls\n") != 0)	
+			strcmp(command, "history\n") != 0 && strcmp(command, "cat") != 0 &&
+			strcmp(command, "ls\n") != 0 && strcmp(command, "\n"))	
 			printf("***ERROR: can not find the file or directory.\n");
 
 		//external command
@@ -90,15 +91,17 @@ int main(){
 			exit(1);
 		}
 		else if(pid == 0){//child process
-			if (strcmp(command, "cat\n") == 0){// cat command
-				//char* a = strtok(command, "cat");
-				char* argv[] = {"cat", "textfile.txt", 0};
-				execvp(argv[0], argv);
+			if (strcmp(command, "cat") == 0){// cat command
+				memmove(command, command+4, strlen(command+4)+1);
+				command = strtok(command, "\n");
+				char* argv[] = {"cat", command, 0};
+				execvp(argv[0], argv);//use execvp to run 'cat'
 			}
 			else if(strcmp(command, "ls\n") == 0){// ls command
 				char* argm[] = {"ls", 0};
-				execvp(argm[0], argm);
+				execvp(argm[0], argm);//use execvp to run 'ls'
 			}
+			exit(1);
 		}
 		else{//parent process
 			while(wait(&status) != pid);
