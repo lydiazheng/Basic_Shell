@@ -1,4 +1,4 @@
-This is a shell program that can implements some basic commands such as ls, cat, history, and exit.
+This is a shell program that can implement some basic commands such as ls, cat, history, and exit.
 
 How to run this program:
 1. type 'make'
