@@ -1,10 +1,12 @@
-How to run the function:
+This is a shell program that can implements some basic commands such as ls, cat, history, and exit.
+
+How to run this program:
 1. type 'make'
 2. type './testfile'
-3. then it will show my_shell: CMPT300@my_shell:~$
-4. you need to input the command to run this program
+3. It will show my_shell: CMPT300@my_shell:~$
+4. you need to type the command to run this program
 
-Features that have been done:
+Features include:
 1. internal commands: exit, cd, pwd, history
 2. external commands: ls, cat
 
