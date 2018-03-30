@@ -1,18 +1,21 @@
-This is a shell program that can implement some basic commands such as ls, cat, history, and exit.
+# Basic Shell
+## Introduction
+This is a shell program that can implement some basic commands such as ls, cat, history, and exit. This is a school project for course Operating System. It was designed to learn basic OS function call in C.
 
-How to run this program:
+## How to run this program:
 1. type 'make'
 2. type './testfile'
 3. It will show my_shell: CMPT300@my_shell:~$
 4. you need to type the command to run this program
 
+## Demo
 Features include:
 1. internal commands: exit, cd, pwd, history
 2. external commands: ls, cat
 
 The output sample:
 
-weilingz@asb9838nu-b13:~/Desktop/Assignment#1_part2$ make
+```weilingz@asb9838nu-b13:~/Desktop/Assignment#1_part2$ make
 make: Nothing to be done for `all'.
 weilingz@asb9838nu-b13:~/Desktop/Assignment#1_part2$ ./testfile
 CMPT300@my_shell:~$ ls
@@ -45,4 +48,4 @@ CMPT300@my_shell:~$ history
    7 history
 
 CMPT300@my_shell:~$ exit
-Wow! my_shell exit!
+Wow! my_shell exit!```
