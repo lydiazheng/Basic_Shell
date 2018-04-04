@@ -1,6 +1,6 @@
 # Basic Shell
 ## Introduction
-This is a shell program that can implement some basic commands such as ls, cat, history, and exit. This is a school project for course Operating System. It was designed to learn basic OS function call in C.
+This is a shell program that can implement some basic commands such as ls, cat, history, and exit. This is a school project for the Operating System course. It was designed to learn basic OS function call in C.
 
 ## How to run this program:
 1. type 'make'
